@@ -25,7 +25,7 @@ net = cv2.dnn.readNetFromCaffe(prototxt, model)
 @app.route('/', methods=['POST', 'GET'])
 def predict():
     # get data
-    return strimg
+    return ('test')
     data = request.get_json(force=True)
     return data
     # convert data into dataframe
