@@ -7,4 +7,5 @@ opencv-contrib-python==4.0.0.21
 opencv-python==4.0.0.21
 gunicorn==19.9.0
 pandas==0.25.0
-
+jsonpickle==1.2
+jsonschema==2.6.0
