@@ -68,7 +68,7 @@ def test():
         # sort the indexes of the probabilities in descending order (higher
         # probabilitiy first) and grab the top-5 predictions
         idxs = np.argsort(preds[0])[::-1][:5]
-
+        listResults = []
         # loop over the top-5 predictions and display them
         for (i, idx) in enumerate(idxs):
             # draw the top prediction on the input image
@@ -80,20 +80,12 @@ def test():
 
             # display the predicted label + associated probability to the
             # console
-            output = ("[INFO] {}. label: {}, probability: {:.5}".format(i + 1,
+            output = ("{}. label: {}, probability: {:.5}".format(i + 1,
                 classes[idx], preds[0][idx]))
+            listResults.append(output)
+            
 
-        response = {'message': text}
-        #response = {'message': 'image received'}
-        # encode response using jsonpickle
-        response_pickled = jsonpickle.encode(response)
-        #return (response)
-        return Response(response=response_pickled, status=200, mimetype="application/json")
-
-        # convert string of image data to uint8
-        # build a response dict to send back to client
-        response = {'message': 'image received. size={}x{}'.format(img.shape[1], img.shape[0])
-                    }
+        response = {'results' : listResults}
         #response = {'message': 'image received'}
         # encode response using jsonpickle
         response_pickled = jsonpickle.encode(response)
