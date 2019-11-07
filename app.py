@@ -1,7 +1,5 @@
 import pandas as pd
 from flask import Flask, jsonify, request, Response
-import pickle
-import base64
 import jsonpickle
 import numpy as np
 import cv2
