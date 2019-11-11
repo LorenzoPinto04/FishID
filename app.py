@@ -1,9 +1,12 @@
 import pandas as pd
 from flask import Flask, jsonify, request, Response
+import pickle
+import base64
 import jsonpickle
 import numpy as np
 import cv2
 import json
+from PIL import Image
 
 # app
 app = Flask(__name__)
@@ -25,7 +28,7 @@ net = cv2.dnn.readNetFromCaffe(prototxt, model)
 @app.route('/', methods=['POST', 'GET'])
 def predict():
     # get data
-    return ('test')
+    return strimg
     data = request.get_json(force=True)
     return data
     # convert data into dataframe
@@ -43,14 +46,24 @@ def predict():
 
 
     # route http posts to this method
-@app.route('/api/test', methods=['POST'])
+@app.route('/api/test', methods=['POST', 'GET'])
 def test():
     if request.method == 'POST':
     
         r = request
-        nparr = np.fromstring(r.data, np.uint8)
+        #return str(r.files['file_field'])
+        #return(str(r.files))
+        #nparr = np.asarray(Image.open(r.files['file_field']))
+        img = Image.open(r.files['file_field'])
+        #nparr = np.frombuffer(r.files['file_field'], np.uint8)
+        
+        image = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+        
+        #return(str(img))
+        
         # decode image
-        image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        #image = cv2.imdecode(img, cv2.IMREAD_COLOR)
+        cv2.imwrite('image.jpg', image)
         #cv2.imwrite('file.jpg', image)
         # our CNN requires fixed spatial dimensions for our input image(s)
         # so we need to ensure it is resized to 224x224 pixels while
