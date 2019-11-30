@@ -79,7 +79,7 @@ def test():
 
             # sort the indexes of the probabilities in descending order (higher
             # probabilitiy first) and grab the top-5 predictions
-            idxs = np.argsort(preds[0])[::-1][:5]
+            idxs = np.argsort(preds[0])[::-1][:50]
             listResults = []
             # loop over the top-5 predictions and display them
             for (i, idx) in enumerate(idxs):
