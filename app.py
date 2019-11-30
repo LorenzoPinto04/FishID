@@ -92,7 +92,7 @@ def test():
 
                 # display the predicted label + associated probability to the
                 # console
-                output = ("{}. label: {}, probability: {:.5}".format(i + 1,
+                output = ("{}, {}, {:.5}".format(i + 1,
                     classes[idx], preds[0][idx]))
                 listResults.append(output)
 
