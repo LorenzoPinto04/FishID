@@ -4,7 +4,7 @@ imutils==0.5.3
 numpy==1.16.5
 numpydoc==0.8.0
 opencv-contrib-python==4.0.0.21
-opencv-python-headless==4.0.0.21
+opencv-python-headless==4.1.1.26
 gunicorn==19.9.0
 pandas==0.25.0
 jsonpickle==1.2
